@@ -1228,7 +1228,7 @@ i = 0
 
 for c in source:
     if c not in d:
-        d[c] = {'pos': i, 'count': 0}
+        d[c] = {'pos': i, 'count': 0, 'char': c}
 
     d[c]['count'] += 1
     i += 1
@@ -1238,18 +1238,16 @@ for c in d:
     if d[c]['count'] == 1:
         solutions.append(d[c])
 
-print range(len(solutions));
-# order the solutions
-# for i in range(len(solutions)):
-#     print()
-    # for j in range(len(solutions)):
+for i in range(len(solutions)):
+    for j in range(len(solutions) - 1 - i):
+        if solutions[j]['pos'] > solutions[j + 1]['pos']:
+            tmp = solutions[j]
+            solutions[j] = solutions[j + 1]
+            solutions[j + 1] = tmp
 
-# out = ""
-#
-# for c in solutions:
-#     print '%s %s' % (c, d[c])
-#
-#     if d[c]['count'] == 1:
-#         out += c
-#
-# print out
+out = ""
+
+for c in solutions:
+    out += c['char']
+
+print out
