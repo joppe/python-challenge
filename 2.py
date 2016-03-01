@@ -1224,8 +1224,32 @@ $#_}*!(+([_&%{^&[([%]}*^{{([@+@]@*&@_!]_+([(#&!]]#$$#]@#{_]][_{@]{*))$({%}_![@$]
 """
 
 d = {}
+i = 0
 
-print d['foo']
-# for c in source:
-#     print c
-    # if d[c]
+for c in source:
+    if c not in d:
+        d[c] = {'pos': i, 'count': 0}
+
+    d[c]['count'] += 1
+    i += 1
+
+solutions = []
+for c in d:
+    if d[c]['count'] == 1:
+        solutions.append(d[c])
+
+print range(len(solutions));
+# order the solutions
+# for i in range(len(solutions)):
+#     print()
+    # for j in range(len(solutions)):
+
+# out = ""
+#
+# for c in solutions:
+#     print '%s %s' % (c, d[c])
+#
+#     if d[c]['count'] == 1:
+#         out += c
+#
+# print out
